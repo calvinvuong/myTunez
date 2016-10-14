@@ -9,7 +9,8 @@ typedef struct song_node {
 // inserts new song node into the front of the linked list list points to 
 song_node * insert_front(song_node *list, song_node new);
 
-// insert nodes in order: WHAT DOES THAT MEAN?
+// inserts new song node in order (alphabetically)
+song_node * insert_alphabet(song_node *list, song_node new);
 
 // prints entire list of song nodes
 void print_list(song_node *list);
