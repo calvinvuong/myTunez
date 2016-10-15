@@ -44,12 +44,32 @@ song_node * find_node_artist(song_node *list, char artist[]){
   return NULL;
 }
 
-/*song_node * insert_alphabet(song_node *list, char name[], char artist[]){
-  while(list->next){
-    if(
-  }
+song_node * insert_alphabet(song_node *list, char name[], char artist[]){
+  // if list goes in front
+  if ( list == NULL || strcmp(list->name, name) > 0 )
+    return insert_front(list, name, artist);
+
+  song_node *front = list;
+  song_node *new = (song_node *) malloc(sizeof(song_node));
+  strcpy(new->name, name);
+  strcpy(new->artist, artist);
+
+  while ( list->next != NULL ) { 
+    if ( strcmp(list->next->name, name) > 0 ) {
+      song_node *tmp_ptr = list->next;
+      new->next = tmp_ptr;
+      list->next = new;
+      return front;
+    }
+    list = list->next;
+  } 
+  // if while loop exists, song goes at the end
+  list->next = new;
+  new->next = NULL;
+  
+  return front;
 }
-*/
+
 
 void print_list( song_node *list ) {
   while ( list != NULL ) { // while there is still a next element
@@ -61,15 +81,15 @@ void print_list( song_node *list ) {
   }
 
 int main() {
-  song_node *list = insert_front(NULL, "Hips Don't Lie", "Shakira");
+  song_node *list = insert_alphabet(NULL, "Highway to Hell", "AC/DC");
+  list = insert_alphabet(list, "Everlong", "Foo Fighters");
+  list = insert_alphabet(list, "Hips Don't Lie", "Shakira");
+  list = insert_alphabet(list, "Something Good Can Work", "Two Door Cinema Club");
+  list = insert_alphabet(list, "American Idiot", "Green Day");
   
-  list = insert_front(list, "Everlong", "Foo Fighters");
-  
-  list = insert_front(list, "Highway to Hell", "AC/DC");
-
   print_list(list);
-  printf("%s\n", find_node_name(list, "Everlong")->artist);
-  printf("%s\n", find_node_artist(list, "Foo Fighters")->name);
+  printf("Finding Everlong: %s\n", find_node_name(list, "Everlong")->name);
+  printf("Finding first song by foo fighters: %s\n", find_node_artist(list, "Foo Fighters")->name);
   list = free_list(list);
   print_list(list);
   return 0;
