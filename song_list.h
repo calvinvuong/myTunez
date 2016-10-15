@@ -6,11 +6,11 @@ typedef struct song_node {
   struct song_node *next;
 } song_node;
 
-// inserts new song node into the front of the linked list list points to 
-song_node * insert_front(song_node *list, song_node new);
+// inserts new song node specifed by name + artist into the front of the linked list list points to 
+song_node * insert_front(song_node *list, char name[], char artist[]);
 
 // inserts new song node in order (alphabetically)
-song_node * insert_alphabet(song_node *list, song_node new);
+song_node * insert_alphabet(song_node *list, char name[], char artist[]);
 
 // prints entire list of song nodes
 void print_list(song_node *list);
@@ -25,7 +25,7 @@ song_node * find_node_artist(song_node *list, char *artist_name);
 song_node * random_node(song_node *list);
 
 // removes specified node from the list; returns pointer to first node in list
-song_node * remove_node(song_node *list, song_node *remove);
+song_node * remove_node(song_node *list, char name[], char artist[]);
 
 // frees entire list; returns pointer to beginning of list
 song_node * free_list(song_node *list);

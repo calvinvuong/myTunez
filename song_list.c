@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "song_list.h"
 
 song_node * insert_front(song_node *list, song_node new) {
   song_node *to_insert = (song_node *) malloc(sizeof(song_node));;
-  to_insert->name = new.name;
-  to_insert->artist = new.artist;
+  strcpy(to_insert->name, new.name);
+  strcpy(to_insert->artist, new.artist);
   to_insert->next = list;
 
   return to_insert;
@@ -34,12 +35,12 @@ void print_list( song_node *list ) {
   
 }
 
-void main() {
+int main() {
   song_node t1;
   song_node t2;
   song_node t3;
   song_node t4;
-
+  
   char a[256] = "Hips Don't Lie";
   t1.name = a;
   //  t1.artist = "Shakira";
@@ -64,6 +65,8 @@ void main() {
 
   print_list(t1);
   t1 = free_list(t1);
-  print_lsit(t1);
+  print_list(t1);
+
+  return 0;
 }
 
