@@ -34,23 +34,6 @@ song_node * find_node_name(song_node *list, char name[]){
   return NULL;
 }
 
-song_node * find_node_artist(song_node *list, char artist[]){
-  while ( list != NULL ) {
-    if(!strcmp(list->artist, artist)){
-      return list;
-    }
-    list=list->next;
-  }
-  return NULL;
-}
-
-/*song_node * insert_alphabet(song_node *list, char name[], char artist[]){
-  while(list->next){
-    if(
-  }
-}
-*/
-
 void print_list( song_node *list ) {
   while ( list != NULL ) { // while there is still a next element
     printf( "%s - %s, ", list->artist, list->name );
@@ -68,8 +51,7 @@ int main() {
   list = insert_front(list, "Highway to Hell", "AC/DC");
 
   print_list(list);
-  printf("%s\n", find_node_name(list, "Everlong")->artist);
-  printf("%s\n", find_node_artist(list, "Foo Fighters")->name);
+  printf("%s\n", find_song(list, "Everlong")->artist);
   list = free_list(list);
   print_list(list);
   return 0;
