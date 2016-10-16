@@ -25,7 +25,7 @@ song_node * find_node_artist(song_node *list, char artist[]);
 song_node * random_node(song_node *list);
 
 // removes specified node from the list; returns pointer to first node in list
-song_node * remove_node(song_node *list, char name[], char artist[]);
+song_node * remove_node(song_node *list, char name[]);
 
 // frees entire list; returns pointer to beginning of list
 song_node * free_list(song_node *list);

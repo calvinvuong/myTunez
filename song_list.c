@@ -13,8 +13,6 @@ song_node * insert_front(song_node *list, char name[], char artist[]) {
   return new;
 }
 
-//song_node * insert_alphabet(song_node *list, song_node new);
-
 song_node * free_list(song_node *list) {
   while ( list != NULL ) {
     song_node * tmp_ptr = list->next;
@@ -70,7 +68,39 @@ song_node * insert_alphabet(song_node *list, char name[], char artist[]){
   return front;
 }
 
+song_node * random_song(song_node *list) {
+  // count num of songs
+  song_node *counter = list;
+  int num;
+  while ( counter != NULL ) {
+    counter = counter->next;
+    num++;
+  }
+  // look into random number generator stuff
+  return NULL;
+}
 
+song_node * remove_node(song_node *list, char name[]) {
+  song_node *tmp_ptr = list;
+  // if node to remove is first element
+  if ( strcmp(tmp_ptr->name, name) == 0 ) {
+    tmp_ptr = tmp_ptr->next;
+    free(list);
+    return tmp_ptr;
+  }
+  // if node to remove is not first element
+  while ( tmp_ptr != NULL ) {
+    if ( tmp_ptr->next != NULL && strcmp(tmp_ptr->next->name, name) == 0 ) { // found song to remove
+      song_node *remove_node = tmp_ptr->next;
+      tmp_ptr->next = tmp_ptr->next->next;
+      free(remove_node);
+      return list;
+    }
+    tmp_ptr = tmp_ptr->next;
+  }
+  return list; // runs if node to remove not found
+}
+    
 void print_list( song_node *list ) {
   while ( list != NULL ) { // while there is still a next element
     printf( "%s - %s, ", list->artist, list->name );
@@ -90,6 +120,24 @@ int main() {
   print_list(list);
   printf("Finding Everlong: %s\n", find_node_name(list, "Everlong")->name);
   printf("Finding first song by foo fighters: %s\n", find_node_artist(list, "Foo Fighters")->name);
+
+  printf("Removing 'Hips Don't Lie'...\n");
+  list = remove_node(list, "Hips Don't Lie");
+  print_list(list);
+
+  printf("\nRemoving 'American Idiot'...\n");
+  list = remove_node(list, "American Idiot");
+  print_list(list);
+
+  printf("\nRemoving 'Something Good Can Work'...\n");
+  list = remove_node(list, "Something Good Can Work");
+  print_list(list);
+  
+  printf("\nRemoving nonexistent song 'Hello'...\n");
+  list = remove_node(list, "Hello");
+  print_list(list);
+  
+
   list = free_list(list);
   print_list(list);
   return 0;
