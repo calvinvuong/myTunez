@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #include "song_list.h"
 
@@ -77,7 +78,13 @@ song_node * random_song(song_node *list) {
     num++;
   }
   // look into random number generator stuff
-  return NULL;
+  srand(time(NULL));
+  int r = rand()%num;
+  while (r){
+    list=list->next;
+    r--;
+  }
+  return list->next;
 }
 
 song_node * remove_node(song_node *list, char name[]) {
@@ -120,6 +127,8 @@ int main() {
   print_list(list);
   printf("Finding Everlong: %s\n", find_node_name(list, "Everlong")->name);
   printf("Finding first song by foo fighters: %s\n", find_node_artist(list, "Foo Fighters")->name);
+
+  printf("Getting random song: %s\n", random_song(list)->name);
 
   printf("Removing 'Hips Don't Lie'...\n");
   list = remove_node(list, "Hips Don't Lie");
