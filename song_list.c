@@ -72,19 +72,19 @@ song_node * insert_alphabet(song_node *list, char name[], char artist[]){
 song_node * random_song(song_node *list) {
   // count num of songs
   song_node *counter = list;
-  int num;
+  int num = 0;
   while ( counter != NULL ) {
     counter = counter->next;
     num++;
   }
   // look into random number generator stuff
   srand(time(NULL));
-  int r = rand()%num;
+  int r =  (rand())%num;
   while (r){
-    list=list->next;
+    list = list->next;
     r--;
   }
-  return list->next;
+  return list;
 }
 
 song_node * remove_node(song_node *list, char name[]) {
