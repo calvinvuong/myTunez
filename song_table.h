@@ -1,13 +1,15 @@
+#include "song_list.h"
+
 // contains type definitions and function headers for a table of linked lists
 
 // adds song; returns node of song added
-song_node add_song(song_node *table[], char name[], char artist[]);
+song_node[] * add_song(song_node *table[], char name[], char artist[]);
 
 // searches for song based on name, returns node of the song
 song_node find_song(song_node *table[], char name[]);
 
 // searches for an artist and returns all songs by artist
-song_node find_artist(song_node *table[], char artist[]);
+song_node * find_artist(song_node *table[], char artist[]);
 
 // print out all entries under a certain letter
 void print_letter(song_node *table[], char letter);
