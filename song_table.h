@@ -2,11 +2,11 @@
 
 // contains type definitions and function headers for a table of linked lists
 
-// adds song; returns node of song added
-song_node[] * add_song(song_node *table[], char name[], char artist[]);
+// adds song; returns pointer of the song table
+void add_song(song_node *table[], char name[], char artist[]);
 
-// searches for song based on name, returns node of the song
-song_node find_song(song_node *table[], char name[]);
+// searches for song based on name, returns pointer to the node of the song
+song_node * find_song(song_node *table[], char name[]);
 
 // searches for an artist and returns all songs by artist
 song_node * find_artist(song_node *table[], char artist[]);
@@ -15,7 +15,7 @@ song_node * find_artist(song_node *table[], char artist[]);
 void print_letter(song_node *table[], char letter);
 
 // print out all entries by a certain artist
-void print_artist(song_node *table[], char[] artist);
+void print_artist(song_node *table[], char artist[]);
 
 // prints out all the songs
 void print_library(song_node *table[]);

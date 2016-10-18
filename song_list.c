@@ -115,8 +115,9 @@ void print_list( song_node *list ) {
   }
   printf("\n");
   
-  }
+}
 
+/*
 int main() {
   song_node *list = insert_alphabet(NULL, "Highway to Hell", "AC/DC");
   list = insert_alphabet(list, "Everlong", "Foo Fighters");
@@ -151,4 +152,5 @@ int main() {
   print_list(list);
   return 0;
 }
+*/
 
