@@ -4,7 +4,7 @@
 #include <ctype.h>
 
 #include "song_list.h"
-
+#include "song_table.h"
 
 void add_song(song_node *table[], char name[], char artist[]) {
   int row = tolower(name[0]) % 'a';

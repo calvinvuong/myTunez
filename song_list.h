@@ -1,5 +1,8 @@
 // contains type definitions and function headers for a single linked list of songs
 
+#ifndef SONG_LIST_H
+#define SONG_LIST_H
+
 typedef struct song_node {
   char name[256];
   char artist[256];
@@ -29,3 +32,5 @@ song_node * remove_node(song_node *list, char name[]);
 
 // frees entire list; returns pointer to beginning of list
 song_node * free_list(song_node *list);
+
+#endif
