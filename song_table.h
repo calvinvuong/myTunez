@@ -24,10 +24,10 @@ void print_library(song_node *table[]);
 void shuffle(song_node *table[]);
 
 // delete song; returns node of song deleted
-song_node delete_song(song_node *table[], char name[]);
+void delete_song(song_node *table[], char name[]);
 
 // delete all the song nodes
-song_node delete_library(song_node *table[]);
+void delete_library(song_node *table[]);
  
   
 
