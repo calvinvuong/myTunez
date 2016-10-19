@@ -45,14 +45,20 @@ void print_library(song_node *table[]) {
 
 // delete song; returns node of song deleted
 void delete_song(song_node *table[], char name[]){
-  remove_node(table[name[0]-'a'], name);
+  int ctr=25;
+  while(ctr){
+    if(find_node_name(table[ctr], name)){
+      table[ctr]=remove_node(table[ctr], name);
+    }
+    ctr--;
+  }
 }
 
 // delete all the song nodes
 void delete_library(song_node *table[]){
-  int ctr=25;
+  int ctr=26;
   while(ctr){
-    free_list(table[ctr]);
+    table[ctr-1]=free_list(table[ctr-1]);
     ctr--;
   }
 }
@@ -82,6 +88,10 @@ int main() {
   printf("Finding 'Californication': \n %s", a);
   print_letter(table, 'a');
   print_letter(table, 'f');
-  
+  delete_song(table, "Hello");
+  print_letter(table, 'h');
+  delete_library(table);
+  print_letter(table, 'a');
+  print_letter(table, 'f');
   return 0;
 }
