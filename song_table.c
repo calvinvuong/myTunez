@@ -8,7 +8,6 @@
 
 void add_song(song_node *table[], char name[], char artist[]) {
   int row = tolower(name[0]) % 'a';
-  printf("%d\n", row);
   table[row] = insert_alphabet(table[row], name, artist);
   //  return table;
 }
@@ -29,18 +28,33 @@ song_node * find_artist(song_node *table[], char artist[]) {
 
 void print_letter(song_node *table[], char letter) {
   int row = tolower(letter) % 'a';
-  printf("---------------------------\n");
+  //  printf("---------------------------\n");
   printf("%c\n", letter);
   printf("---------------------------\n");
   print_list(table[row]);
 }
 
 void print_artist(song_node *table[], char artist[]) {
-
+  int i;
+  for ( i = 0; i < 26; i++ ) {
+    song_node *ptr = table[i];
+    
+    while ( ptr != NULL ) {
+      ptr = find_node_artist(ptr, artist);
+      if ( ptr == NULL )
+	break;
+      printf("%s - %s, ", ptr->artist, ptr->name);
+      ptr = ptr->next;
+    }
+  }
 }
 
 void print_library(song_node *table[]) {
-
+  int i;
+  for ( i = 0; i < 26; i++ ) {
+    if ( table[i] != NULL ) 
+      print_letter(table, i+'a');
+  }
 }
 
 // delete song; returns node of song deleted
@@ -73,6 +87,8 @@ int main() {
   add_song(table, "American Idiot", "Green Day");
   add_song(table, "All Star", "Smash Mouth");
   add_song(table, "Beverley Hills", "Weezer");
+  add_song(table, "Island in the Sun", "Weezer");
+  add_song(table, "When We Were Young", "Adele");
   add_song(table, "F Song", "some artist");
   add_song(table, "Hello", "Adele");
 
@@ -85,11 +101,31 @@ int main() {
   a = find_song(table, "Hello");
   printf("Finding 'Hello': \n %s - %s\n", a->artist, a->name);
   a = find_song(table, "Californication");
-  printf("Finding 'Californication': \n %s", a);
+  printf("Finding 'Californication': \n %s\n\n", a);
+
+  printf("Printing entire library: \n");
+  print_library(table);
+
+  printf("\nFinding all songs by Weezer: \n");
+  print_artist(table, "Weezer");
+  printf("\nFinding all songs by Adele: \n");
+  print_artist(table, "Adele");
+  printf("\nFinding all songs by Green Day: \n");
+  print_artist(table, "Green Day");
+  printf("\nFinding all songs by Lionel Richie: \n");
+  print_artist(table, "Lionel Richie");
+ 
+  printf("\nTesting delete:\n");
+  printf("Printing a and h songs:\n");
   print_letter(table, 'a');
-  print_letter(table, 'f');
-  delete_song(table, "Hello");
   print_letter(table, 'h');
+
+  printf("\nDeleting Hello and printing a and h songs:\n");
+  delete_song(table, "Hello");
+  print_letter(table, 'a');
+  print_letter(table, 'h');
+
+  printf("\nPrinting entire library and a and h songs after deleting it:\n");
   delete_library(table);
   print_letter(table, 'a');
   print_letter(table, 'f');
