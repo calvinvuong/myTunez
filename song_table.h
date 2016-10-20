@@ -1,3 +1,9 @@
+/*
+Giovanni Topa and Calvin Vuong
+MKS65 pd10
+Project0: myTunez
+10-20-2016
+*/
 #include "song_list.h"
 
 #ifndef SONG_TABLE_H
@@ -23,7 +29,7 @@ void print_artist(song_node *table[], char artist[]);
 void print_library(song_node *table[]);
 
 // prints out list of randomly ordered songs
-void shuffle(song_node *table[]);
+void shuffle_library(song_node *table[]);
 
 // delete song; returns node of song deleted
 void delete_song(song_node *table[], char name[]);

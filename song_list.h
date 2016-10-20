@@ -1,3 +1,10 @@
+/*
+Giovanni Topa and Calvin Vuong
+MKS65 pd10
+Project0: myTunez
+10-20-2016
+*/
+
 // contains type definitions and function headers for a single linked list of songs
 
 #ifndef SONG_LIST_H

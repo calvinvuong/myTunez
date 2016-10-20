@@ -1,3 +1,9 @@
+/*
+Giovanni Topa and Calvin Vuong
+MKS65 pd10
+Project0: myTunez
+10-20-2016
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -69,29 +75,29 @@ int main() {
   add_song(table, "American Idiot", "Green Day");
   print_library(table);
 
-  printf("\nadding: All Star\n");
-  add_song(table, "All Star", "Smash Mouth");
-  print_library(table);
-
   printf("\nadding: Beverley Hills\n");
   add_song(table, "Beverley Hills", "Weezer");
   print_library(table);
-
-  printf("\nadding: Island in the Sun\n");
-  add_song(table, "Island in the Sun", "Weezer");
+  
+  printf("\nadding: All Star\n");
+  add_song(table, "All Star", "Smash Mouth");
   print_library(table);
 
   printf("\nadding: When We Were Young\n");
   add_song(table, "When We Were Young", "Adele");
   print_library(table);
 
-  printf("\nadding: Hello");
+  printf("\nadding: Island in the Sun\n");
+  add_song(table, "Island in the Sun", "Weezer");
+  print_library(table);
+
+  printf("\nadding: Hello\n");
   add_song(table, "Hello", "Adele");
   print_library(table);
 
   
   song_node *a = find_song(table, "American Idiot"); 
-  printf("finding: American Idiot: \n %s - %s\n", a->artist, a->name);
+  printf("\nfinding: American Idiot: \n %s - %s\n", a->artist, a->name);
   a = find_song(table, "All Star");
   printf("finding: All Star: \n %s - %s\n", a->artist, a->name);
   a = find_song(table, "Hello");
@@ -125,7 +131,7 @@ int main() {
   print_letter(table, 'a');
   print_letter(table, 'h');
 
-  printf("\nPrinting entire library and a and h songs after deleting it:\n");
+  printf("\nPrinting entire library and a and h songs after delete_library():\n");
   delete_library(table);
   print_letter(table, 'a');
   print_letter(table, 'b');
@@ -133,3 +139,4 @@ int main() {
 
   return 0;
 }
+

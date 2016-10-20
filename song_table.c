@@ -1,7 +1,14 @@
+/*
+Giovanni Topa and Calvin Vuong
+MKS65 pd10
+Project0: myTunez
+10-20-2016
+*/
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <time.h>
 
 #include "song_list.h"
 #include "song_table.h"
@@ -82,7 +89,6 @@ void shuffle_library(song_node *table[]) {
     songs[i] = songs[rand_pos];
     songs[rand_pos] = tmp;
   }
-  
   
   // print out stuff
   for ( i = 0; i < num_songs; i++ ) 
