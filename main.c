@@ -55,5 +55,76 @@ int main() {
   list = free_list(list);
   print_list(list);
 
+  /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+  printf("Testing Song Library Functions:\n");
+  
+  song_node *table[26];
+  // must initialize values to zero
+  int i;
+  for ( i = 0; i < 26; i++ )
+    table[i] = 0;
+
+  printf("Adding songs: \n");
+  printf("adding: American Idiot\n");
+  add_song(table, "American Idiot", "Green Day");
+  print_library(table);
+
+  printf("\nadding: All Star\n");
+  add_song(table, "All Star", "Smash Mouth");
+  print_library(table);
+
+  printf("\nadding: Beverley Hills\n");
+  add_song(table, "Beverley Hills", "Weezer");
+  print_library(table);
+
+  printf("\nadding: Island in the Sun\n");
+  add_song(table, "Island in the Sun", "Weezer");
+  print_library(table);
+
+  printf("\nadding: When We Were Young\n");
+  add_song(table, "When We Were Young", "Adele");
+  print_library(table);
+
+  printf("\nadding: Hello");
+  add_song(table, "Hello", "Adele");
+  print_library(table);
+
+  
+  song_node *a = find_song(table, "American Idiot"); 
+  printf("finding: American Idiot: \n %s - %s\n", a->artist, a->name);
+  a = find_song(table, "All Star");
+  printf("finding: All Star: \n %s - %s\n", a->artist, a->name);
+  a = find_song(table, "Hello");
+  printf("finding: Hello: \n %s - %s\n", a->artist, a->name);
+  a = find_song(table, "Californication");
+  printf("finding: Californication: \n %s\n\n", a);
+
+  printf("Printing entire library: \n");
+  print_library(table);
+
+  printf("\n\nfinding: all by Weezer: \n");
+  print_artist(table, "Weezer");
+  printf("\nfinding: all by Adele: \n");
+  print_artist(table, "Adele");
+  printf("\nfinding: all by Green Day: \n");
+  print_artist(table, "Green Day");
+  printf("\nfinding: all by Lionel Richie: \n");
+  print_artist(table, "Lionel Richie");
+ 
+  printf("\nTesting delete and print_letter():\n");
+  printf("printing: a and h songs:\n");
+  print_letter(table, 'a');
+  print_letter(table, 'h');
+
+  printf("\ndeleting: All Star and printing: a and h songs:\n");
+  delete_song(table, "All Star");
+  print_letter(table, 'a');
+  print_letter(table, 'h');
+
+  printf("\nPrinting entire library and a and h songs after deleting it:\n");
+  delete_library(table);
+  print_letter(table, 'a');
+  print_letter(table, 'b');
+
   return 0;
 }

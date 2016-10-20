@@ -60,7 +60,7 @@ void print_library(song_node *table[]) {
 // delete song; returns node of song deleted
 void delete_song(song_node *table[], char name[]){
   int ctr=25;
-  while(ctr){
+  while(ctr >= 0){
     if(find_node_name(table[ctr], name)){
       table[ctr]=remove_node(table[ctr], name);
     }
@@ -70,8 +70,8 @@ void delete_song(song_node *table[], char name[]){
 
 // delete all the song nodes
 void delete_library(song_node *table[]){
-  int ctr=26;
-  while(ctr){
+  int ctr=25;
+  while(ctr >= 0){
     table[ctr-1]=free_list(table[ctr-1]);
     ctr--;
   }
