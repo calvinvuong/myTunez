@@ -110,7 +110,11 @@ int main() {
   print_artist(table, "Green Day");
   printf("\nfinding: all by Lionel Richie: \n");
   print_artist(table, "Lionel Richie");
- 
+
+  printf("\nShuffling: \n");
+  shuffle_library(table);
+  printf("\n");
+
   printf("\nTesting delete and print_letter():\n");
   printf("printing: a and h songs:\n");
   print_letter(table, 'a');
@@ -125,6 +129,7 @@ int main() {
   delete_library(table);
   print_letter(table, 'a');
   print_letter(table, 'b');
+
 
   return 0;
 }

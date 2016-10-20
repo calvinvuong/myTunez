@@ -49,6 +49,48 @@ void print_artist(song_node *table[], char artist[]) {
   }
 }
 
+void shuffle_library(song_node *table[]) {
+  srand(time(NULL));
+  // loop through whole table
+  int num_songs = 0;
+  int i;
+  for ( i = 0; i < 26; i++ ) {
+    song_node *tmp1 = table[i];
+    while(tmp1){
+      num_songs++;
+      tmp1 = tmp1->next;
+    }
+  }
+
+  // copy pointers into songs
+  song_node *songs[num_songs];
+  int ctr = 0;
+  for ( i = 0; i < 26; i++ ) {
+    song_node *tmp2 = table[i];
+    while(tmp2){
+      songs[ctr]=tmp2;
+      ctr++;
+      tmp2=tmp2->next;
+    }
+  }
+  
+  // shuffle pointers
+  for ( i = 0; i < num_songs; i++ ) {
+    int rand_pos = rand() % num_songs;
+    song_node *tmp = songs[i];
+    // swap
+    songs[i] = songs[rand_pos];
+    songs[rand_pos] = tmp;
+  }
+  
+  
+  // print out stuff
+  for ( i = 0; i < num_songs; i++ ) 
+    printf( "%s - %s\n", songs[i]->artist, songs[i]->name);
+  
+}
+
+
 void print_library(song_node *table[]) {
   int i;
   for ( i = 0; i < 26; i++ ) {
