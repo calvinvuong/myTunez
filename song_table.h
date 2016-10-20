@@ -1,5 +1,7 @@
 #include "song_list.h"
 
+#ifndef SONG_TABLE_H
+#define SONG_TABLE_H
 // contains type definitions and function headers for a table of linked lists
 
 // adds song; returns pointer of the song table
@@ -29,5 +31,5 @@ void delete_song(song_node *table[], char name[]);
 // delete all the song nodes
 void delete_library(song_node *table[]);
  
-  
+#endif
 

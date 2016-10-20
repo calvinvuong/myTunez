@@ -77,6 +77,7 @@ void delete_library(song_node *table[]){
   }
 }
 
+/*
 int main() {
   song_node *table[26];
   // must initialize values to zero
@@ -131,3 +132,4 @@ int main() {
   print_letter(table, 'f');
   return 0;
 }
+*/
